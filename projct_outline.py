@@ -1,75 +1,60 @@
 #프로젝트 outline
 
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+from random import randint
 
 #import running_game as rg
 #import quiz as qz
 
-score = 0
-
 #순위 매기기
 
-name = str(input('이름을 입력하세요 : '))
-   
-print("두근두근 기말 축제에 오신 걸 환영합니다!")
-print("다음 부스 중 원하는 부스를 선택하세요")
-print("1번 - 달리기 게임" +"\n" + "2번 - 숫자 맞추기(up & down) " )
-print("3번 - 뉴턴의 사과 피하기" + "\n" + "4번 - 숫자맞추기2(야구게임)") 
-move = str(input("원하시는 부스의 번호를 입력하세요 : "))
+name = input('이름을 입력하세요 : ')
 
-
-def ranking_1():
-        rank = []
-        rank.append(name)    
-        score = []
-        score.append(score1)
-        clr = ["r", "g", "b"]
-        # plt.bar(rank, score, color= clr)
-        # plt.show()
-    
-def ranking_2():
-        rank = []
-        rank.append(name)    
-        score = []
-        score.append(score2)
-        clr = ["r", "g", "b"]
-        # plt.bar(rank, score, color= clr)
-        # plt.show()
-
-def ranking_3():
-        rank = []
-        rank.append(name)    
-        score = []
-        score.append(score3)
-        clr = ["r", "g", "b"]
-        # plt.bar(rank, score, color= clr)
-        # plt.show()
-
-def ranking_4():
-        rank = []
-        rank.append(name)    
-        score = []
-        score.append(score4)
-        clr = ["r", "g", "b"]
-        # plt.bar(rank, score, color= clr)
-        # plt.show()
+while True:
+    score = 0
+    print("두근두근 기말 축제에 오신 걸 환영합니다!")
+    print("다음 부스 중 원하는 부스를 선택하세요")
+    print("1번 - 달리기 게임")
+    print("2번 - 숫자 맞추기(up & down) " )
+    print("3번 - 뉴턴의 사과 피하기")
+    print("4번 - 숫자맞추기2(야구게임)")
+    print("5번 - 나가기") 
+    try:
+        move = int(input("원하시는 부스의 번호를 입력하세요 : "))
+    except:
+        continue
+    def ranking(score):
             
-if move == "1" :
-    import running_game as rg  
-    score1 = rg.points  
-    ranking_1() 
-    # plt.show()
-elif move == "2" :
-    print("숫자 맞추기 게임을 시작합니다!")
-    print(f"1부터 100까지의 숫자 중 맞춰주세요. 기회는 10번 주어집니다.")   
-    import quiz as qz
-    score2 =  qz.get_score()
-    # plt.show()
-elif move == "3" :
-    import apple 
-    score3 = apple.start(score)
-    print(f'{score3=}')
-    # plt.show()
-elif move == "4" :
-    import baseball_game as bg
-    score4 = bg.get_score
+            user=["임현정","조민서","조현경"]
+            score_list =[randint(0, 150) for _ in range(len(user))]
+            user.append(name)  
+            score_list.append(score)
+            color = ["r", "g", "b"]
+            plt.bar(user, score_list, color=color)
+            plt.xlabel("Users")
+            plt.ylabel("Score")
+            plt.show()
+                
+    if move == 1 :
+        import running_game as rg  
+        ranking(rg.menu(death_count=0))
+        
+    elif move == 2 :
+        import quiz
+        ranking(quiz.guess_number())
+
+    elif move == 3 :
+        import apple 
+        ranking(apple.start(score))
+        
+    elif move == 4 :
+        import baseball_game as bg
+        ranking(bg.run())
+        
+    elif move == 5:
+        break
+  
+    else:
+        continue
+    
+        
