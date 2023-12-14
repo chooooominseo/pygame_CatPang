@@ -2,7 +2,6 @@ import pygame
 import os
 import random
 import keyboard
-
 pygame.init()
 
 # Global Constants
@@ -185,9 +184,6 @@ def main():
         points += 1
         if points % 100 == 0:
             game_speed += 1
-        # if (points//10) == 100:
-        #     death_count = 2
-        #     menu(death_count)
             
         text = font.render("score: " + str(points // 10), True, (0, 0, 0))
         textRect = text.get_rect()
@@ -246,26 +242,29 @@ def menu(death_count):
     global points
     run = True
     while run:
-        SCREEN.fill((255, 255, 255))
-        font = pygame.font.Font('freesansbold.ttf', 30)
-        if death_count == 0:
-            text = font.render("Press any Key to Start", True, (0, 0, 0))
-        elif death_count == 1:
-            text = font.render("Press any Key to Restart", True, (0, 0, 0))
-            score = font.render("Your Score: " + str(points // 10), True, (0, 0, 0))
-            scoreRect = score.get_rect()
-            scoreRect.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 + 50)
-            SCREEN.blit(score, scoreRect)
+        try:
+            SCREEN.fill((255, 255, 255))
+            font = pygame.font.Font('freesansbold.ttf', 30)
+            if death_count == 0:
+                text = font.render("Press any Key to Start", True, (0, 0, 0))
+            elif death_count == 1:
+                text = font.render("Press any Key to Restart", True, (0, 0, 0))
+                score = font.render("Your Score: " + str(points // 10), True, (0, 0, 0))
+                scoreRect = score.get_rect()
+                scoreRect.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 + 50)
+                SCREEN.blit(score, scoreRect)
+                
+            Qesc = font.render("Press ESC Key to Quit", True, (0, 0, 0))
+            QescRect = Qesc.get_rect()
+            QescRect.center = (SCREEN_WIDTH // 2 + 190, SCREEN_HEIGHT // 2 + 250)
+            SCREEN.blit(Qesc, QescRect.center)
             
-        Qesc = font.render("Press ESC Key to Quit", True, (0, 0, 0))
-        QescRect = Qesc.get_rect()
-        QescRect.center = (SCREEN_WIDTH // 2 + 190, SCREEN_HEIGHT // 2 + 250)
-        SCREEN.blit(Qesc, QescRect.center)
-        
-        textRect = text.get_rect()
-        textRect.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
-        SCREEN.blit(text, textRect)
-        SCREEN.blit(RUNNING[0], (SCREEN_WIDTH // 2 - 20, SCREEN_HEIGHT // 2 - 140))
+            textRect = text.get_rect()
+            textRect.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
+            SCREEN.blit(text, textRect)
+            SCREEN.blit(RUNNING[0], (SCREEN_WIDTH // 2 - 20, SCREEN_HEIGHT // 2 - 140))
+        except:
+            return exit()
         
         for event in pygame.event.get():
             if keyboard.is_pressed('Escape'):
