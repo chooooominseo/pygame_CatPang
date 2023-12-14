@@ -1,9 +1,10 @@
 #프로젝트 outline
 
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 #import running_game as rg
 #import quiz as qz
+
 score = 0
 
 #순위 매기기
@@ -16,26 +17,60 @@ print("1번 - 달리기 게임" +"\n" + "2번 - 숫자 맞추기(up & down) " )
 print("3번 - 뉴턴의 사과 피하기" + "\n" + "4번 - 숫자맞추기2(야구게임)") 
 move = str(input("원하시는 부스의 번호를 입력하세요 : "))
 
-if move == "1" :
-    import apple 
-    score = apple.start(score)
-    print(f'{score=}')
-    class ranking_1():
+score = 0
+
+def ranking_1():
         rank = []
         rank.append(name)    
-        score_list = []
-        score_list.append(score)
+        score = []
+        score.append(score1)
         clr = ["r", "g", "b"]
-        plt.bar(rank, score_list, color= clr)
-        plt.show()
+        # plt.bar(rank, score, color= clr)
+        # plt.show()
+    
+def ranking_2():
+        rank = []
+        rank.append(name)    
+        score = []
+        score.append(score2)
+        clr = ["r", "g", "b"]
+        # plt.bar(rank, score, color= clr)
+        # plt.show()
+
+def ranking_3():
+        rank = []
+        rank.append(name)    
+        score = []
+        score.append(score3)
+        clr = ["r", "g", "b"]
+        # plt.bar(rank, score, color= clr)
+        # plt.show()
+
+def ranking_4():
+        rank = []
+        rank.append(name)    
+        score = []
+        score.append(score4)
+        clr = ["r", "g", "b"]
+        # plt.bar(rank, score, color= clr)
+        # plt.show()
+            
+if move == "1" :
+    import running_game as rg  
+    score1 = rg.points  
     ranking_1() 
-# elif move == "2" :
-#     import quiz as qz
-    
-    
-# elif move == "3" :
-#     import ball_game as bg
-# elif move == "4" :
-#     import baseball_game
-else :
-    plt.show()
+    # plt.show()
+elif move == "2" :
+    print("숫자 맞추기 게임을 시작합니다!")
+    print(f"1부터 100까지의 숫자 중 맞춰주세요. 기회는 10번 주어집니다.")   
+    import quiz as qz
+    score2 =  qz.get_score()
+    # plt.show()
+elif move == "3" :
+    import apple 
+    score3 = apple.start(score)
+    print(f'{score3=}')
+    # plt.show()
+elif move == "4" :
+    import baseball_game as bg
+    score4 = bg.get_score
